@@ -1,5 +1,3 @@
-this is my CSS - can u add those things to it? 
-
 :root {
   --bg: #d4e6d4;                /* Slightly darker background */
   --header-footer: #2a4f2a;     /* Deeper green for header/footer */
@@ -109,10 +107,36 @@ form button[type="submit"]:hover {
   background: var(--button-hover);
 }
 
-footer {
-  background: var(--header-footer);
+/* New gallery styles for dynamic gallery */
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.gallery-item {
+  max-width: 300px;
+  flex: 1 1 300px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: block;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item p {
+  margin-top: 8px;
+  font-style: italic;
   text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-  color: white;
+  color: var(--text-color);
 }
