@@ -60,4 +60,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1000);
     }, delay);
   }
+  document.addEventListener('DOMContentLoaded', () => {
+  function showPage(pageId) {
+    // existing showPage code...
+  }
+  window.showPage = showPage;
+
+  // existing code for showing home page, form submission, fadeOut, etc.
+
+  // --- Add this at the end inside DOMContentLoaded ---
+  fetch('/gallery.json')
+    .then(response => response.json())
+    .then(data => {
+      const gallery = document.getElementById('gallery');
+      if (!gallery) return; // Exit if no gallery container on page
+      data.forEach(item => {
+        const container = document.createElement('div');
+        container.classList.add('gallery-item');
+
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.title;
+
+        const caption = document.createElement('p');
+        caption.textContent = item.caption;
+
+        container.appendChild(img);
+        container.appendChild(caption);
+        gallery.appendChild(container);
+      });
+    })
+    .catch(err => console.error('Error loading gallery:', err));
+});
 });
