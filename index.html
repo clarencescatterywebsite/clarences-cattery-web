@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CCattery</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+html - 
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clarence's Cattery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* General styles */
+    body {
+      font-family: 'Comic Neue', cursive, sans-serif;
+      background-color: #29AB87;
+      color: #004225;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #a3c9a8;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .tagline {
+      font-style: italic;
+      margin-top: 0.2rem;
+      color: #1f4d3a;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav button {
+      background-color: #70a37f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      margin: 0.2rem 0.3rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    nav button:hover,
+    nav button:focus {
+      background-color: #5a875f;
+      outline: none;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section.page {
+      display: none;
+      background-color: #d8f3dc;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    section.page.active {
+      display: block;
+    }
+    h2 {
+      font-weight: 700;
+      margin-top: 0;
+      color: #2f6f4e;
+      border-bottom: 3px solid #70a37f;
+      padding-bottom: 0.3rem;
+    }
+    p, ul {
+      font-weight: 700;
+      line-height: 1.5;
+      color: #3b6f4d;
+    }
+    ul {
+      padding-left: 1.3rem;
+    }
+    ul li::before {
+      content: "🐾 ";
+    }
+    /* Gallery styles */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .photo-card {
+      background: #b7d7b7;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 200px;
+      text-align: center;
+      font-weight: 700;
+      color: #2f6f4e;
+      transition: transform 0.2s ease;
+    }
+    .photo-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .photo-card img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 0.5rem;
+      object-fit: cover;
+      height: 140px;
+    }
+    .caption {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1f4d3a;
+    }
+    /* Contact form */
+    form {
+      font-weight: 700;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 2px solid #70a37f;
+      border-radius: 8px;
+      font-family: 'Comic Neue', cursive, sans-serif;
+      font-weight: 700;
+      color: #2f6f4e;
+      box-sizing: border-box;
+      margin-top: 0.3rem;
+      margin-bottom: 1rem;
+    }
+    button[type="submit"] {
+      background-color: #70a37f;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #5a875f;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #a3c9a8;
+      color: #2f6f4e;
+      font-weight: 700;
+    }
+    /* Success message */
+    #successMessage {
+      background-color: #70a37f;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    #successMessage svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Clarence's Cattery 🐾</h1>
+    <p class="tagline">Family-run • Five-star awarded • Feline loving care</p>
+    <nav>
+<nav>
+  <button onclick="showPage('home')">Home</button>
+  <button onclick="showPage('name')">What's in a Name?</button>
+  <button onclick="showPage('about')">About Me</button>
+  <button onclick="showPage('day')">A Typical Day</button>
+  <button onclick="showPage('accommodation')">Accommodation</button>
+  <button onclick="showPage('prices')">Prices</button>
+  <button onclick="showPage('gallery')">Gallery</button>
+  <button onclick="showPage('video')">Video Tour</button>
+  <button onclick="showPage('updates')">Updates</button>
+  <button id="reviewsButton">Reviews</button>
+  
+  <button onclick="window.open('https://www.facebook.com/profile.php?id=100063592359308&sk=reviews', '_blank')">Facebook Reviews</button>
+  <button onclick="window.open('https://www.google.com/maps/place/Clarence%E2%80%99s+Cattery+5+star+awarded/@51.8043103,-0.7822747,432m/data=!3m1!1e3!4m8!3m7!1s0x4876f7303083fd5d:0x766e437167e69c5b!8m2!3d51.804307!4d-0.7796998!9m1!1b1!16s%2Fg%2F11g_rm3vwz?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D', '_blank')">Google Reviews</button>
+
+  <button onclick="showPage('contact')">Contact us</button>
+</nav>
+  </header>
+
+<main>
+  <section id="home" class="page active">
+    <h2>Welcome to Clarence's Cattery!</h2>
+    <p>We are a family-run, five-star awarded cattery dedicated to loving and caring for your feline friends.</p>
+
+    <!-- Paw print divider -->
+    <div style="text-align: center; margin: 40px 0;">
+      <div style="font-size: 1.5em; letter-spacing: 0.2em;">🐾 🐾 🐾 🐾 🐾🐾 🐾 🐾 🐾 🐾🐾 🐾 🐾 🐾 🐾</div>
+    </div>
+
+    <h3>📍 Where to Find Us</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 15px;">
+      
+      <!-- Map Image -->
+      <div style="flex: 1; min-width: 250px;">
+        <!-- Replace the src below with your actual image file later -->
+        <img src="https://placehold.co/400x250?text=Map+Coming+Soon" alt="Map to Clarence's Cattery"
+             style="width: 100%; border: 3px solid #4a7a4a; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <p style="margin-top: 10px;">
+          <a href="https://www.google.com/maps/place/Clarence%E2%80%99s+Cattery+5+star+awarded/@51.8043103,-0.7822747,1726m/data=!3m1!1e3!4m6!3m5!1s0x4876f7303083fd5d:0x766e437167e69c5b!8m2!3d51.804307!4d-0.7796998!16s%2Fg%2F11g_rm3vwz?entry=ttu"
+             target="_blank"
+             style="color: var(--button-bg); font-weight: 700; text-decoration: none;">
+            🗺️ Open in Google Maps
+          </a>
+        </p>
+      </div>
+
+      <!-- Address Box -->
+      <div style="flex: 1; min-width: 250px; font-weight: 600; font-size: 1.1em; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <p style="margin: 0;">
+          20 Pike Corner<br>
+          Bedgrove<br>
+          Aylesbury<br>
+          United Kingdom<br>
+          HP21 9DL
+        </p>
+      </div>
+    </div>
+         <p>
+  <a href="https://l.facebook.com/l.php?u=https%3A%2F%2F1drv.ms%2Fw%2Fs!At9B6dPWOHq4i2IgU4AEP1ONolSu%3Fe%3DySzmIt%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBEwampiaFc1NDVIa0hpUGZXVAEeirAeWUHlzRMW10FJJ3SQeD8sxuz8_akQYFQxHR8kire0RbDm56zByLoZatQ_aem_bQ7VCLhwvdvhD_2Vuq-sqw&h=AT3UuSNkOA7jhAFMif3N8nYBwUPeg0kul-fmuVAJdL0OSwZmMA26rK6dUDgYH-8nZBR7ywZWLpFLXGSPlW5Sq8Grm4ChZ2LYyeQmE6acEyvD_IFC3MlrTCguJCHDIrOYT4vycbUTiqTW9yiXLKkNtg" target="_blank" class="doc-link">
+    📄 Please read our Terms and Conditions!
+  </a>
+</p>
+
+    </section>
+  </section>
+</main>
+
+
+ 
+
+    <section id="name" class="page">
+      <h2>What’s in a Name?</h2>
+      <p>Write why it's called Clarence’s — to fill in later</p>
+    </section>
+
+    <section id="about" class="page">
+      <h2>About Me</h2>
+      <p>space to write about family and why you started the cattery.</p>
+    </section>
+
+    <section id="day" class="page">
+      <h2>A Typical Day</h2>
+      <p>what happens in a typical day etc.</p>
+    </section>
+
+    <section id="accommodation" class="page">
+      <h2>Enclosures</h2>
+      <p>Description of the space.</p>
+      <div class="gallery">
+        <div class="photo-card">
+          <img src="https://placekitten.com/300/200" alt="Room 1" />
+          <div class="caption">double enclosure</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://placekitten.com/301/200" alt="Room 2" />
+          <div class="caption">play area</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prices" class="page" style="display:none; font-family: 'Comic Neue', cursive;">
+  <h2 style="color: #2f6f4e; font-weight: 900; margin-bottom: 1rem;">Prices</h2>
+
+  <div style="background: #d8f3dc; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px;">
+    <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.75rem;">
+      🐾 <strong>New Daily Rates (from 1st Jan 2026):</strong>
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-bottom: 1.5rem;">
+      <li style="margin-bottom: 0.5rem;">🐾 <strong>£19</strong> per day for one pussycat</li>
+      <li style="margin-bottom: 0.5rem;">🐾 <strong>£26</strong> per day for two pussycats sharing one suite</li>
+    </ul>
+
+    <p style="margin-bottom: 1rem; line-height: 1.5;">
+      I have thought so hard and long about the service I offer — the accommodation, the personal and individual interaction, the videos/photo/message updates, medication, deep cleaning, maintaining my <strong>FIVE STAR</strong> requirements under DEFRA legislation, and the increased running costs of food, litter, heating, cooling, toys, furniture, wear and tear, etc...
+    </p>
+
+    <p style="margin-bottom: 1rem; font-style: italic;">
+      And of course, all of my love — which goes without saying ♥️
+    </p>
+
+    <p style="margin-bottom: 1.5rem;">
+      All of your pussycats are part of my family too. Clarence’s is a very special place to me, and I hope to you all as well.
+    </p>
+
+    <p style="margin-bottom: 1.5rem;">
+      If anyone would like to cancel their bookings for next year, I completely understand — just please drop me a message or email. 🐾
+    </p>
+
+    <hr style="border: none; border-top: 1px solid #a3b18a; margin-bottom: 1rem;">
+
+    <h3 style="color: #2f6f4e; font-weight: 800; margin-bottom: 1rem;">Other Requirements</h3>
+    <ul style="list-style: none; padding-left: 0;">
+      <li style="margin-bottom: 0.5rem;">🐾 All cats must be vaccinated and flea-treated</li>
+      <li style="margin-bottom: 0.5rem;">🐾 Please have a read of our terms and conditions before you book</li>
+      <li>🐾 Bookings are secured with a deposit</li>
+    </ul>
+  </div>
+</section>
+
+
+    <section id="gallery" class="page">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <div class="photo-card">
+          <img src="https://placekitten.com/200/200" alt="Cat 1" />
+          <div class="caption">cat 1</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://placekitten.com/201/200" alt="Cat 2" />
+          <div class="caption">cat 2</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://placekitten.com/202/200" alt="Cat 3" />
+          <div class="caption">cat 3</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="page">
+      <h2>Video Tour</h2>
+      <video controls width="100%">
+        <source src="tour.mp4" type="video/mp4" />
+        Your browser does not support video.
+      </video>
+    </section>
+
+    <section id="updates" class="page">
+      <h2>Updates & Noticeboard</h2>
+      <p>Welcome to the updates board! Here you'll find the latest news, important notices, and announcements from Clarence's Cattery.</p>
+      <ul>
+        <li><strong>August 1, 2025:</strong> announcement!!!</li>
+        <li><strong>July 20, 2025:</strong> another annoucement!!.</li>
+        <li><strong>July 10, 2025:</strong> and another annoucement!!</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="page">
+  <h2>Contact</h2>
+
+  <!-- Clean Post-it Style Contact Info with border -->
+  <div style="
+    background: #fff9c4; /* soft pastel yellow */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 3px dashed #f4d03f; /* dashed golden border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+    max-width: 400px;
+  ">
+    <p style="margin: 0 0 10px;">📞 Mobile:  
+      <a href="tel:07917061609" style="color: #3b4a1f; text-decoration: none;">07917 061609</a>
+    </p>
+    <p style="margin: 0 0 10px;">💬 WhatsApp:  
+      <a href="https://wa.me/447917061609" target="_blank" style="color: #3b4a1f; text-decoration: none;">+44 7917 061609</a>
+    </p>
+    <p style="margin: 0;">📧 Email:  
+      <a href="mailto:clarencescattery@gmail.com" style="color: #3b4a1f; text-decoration: none;">clarencescattery@gmail.com</a>
+    </p>
+  </div>
+
+  <div id="successMessage" role="alert" aria-live="polite">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M9 16.17l-3.88-3.88-1.41 1.41L9 19 20.3 7.71l-1.41-1.41z" />
+    </svg>
+    Thanks for your message! We'll get back to you soon.
+  </div>
+
+  <form id="contactForm" action="https://formspree.io/f/xblkkvpe" method="POST">
+    <label for="nameInput">Name:</label><br />
+    <input type="text" id="nameInput" name="name" required placeholder="Your name" /><br />
+
+    <label for="emailInput">Email:</label><br />
+    <input type="email" id="emailInput" name="email" required placeholder="you@example.com" /><br />
+
+    <label for="messageInput">Message:</label><br />
+    <textarea id="messageInput" name="message" rows="4" required placeholder="Your message"></textarea><br />
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+this is my CSS - can u add those things to it? 
+
+:root {
+  --bg: #d4e6d4;                /* Slightly darker background */
+  --header-footer: #2a4f2a;     /* Deeper green for header/footer */
+  --button-bg: #3d6b3d;         /* Darker green for buttons */
+  --button-hover: #325a32;      /* Slightly deeper on hover */
+  --text-color: #163016;        /* Darker text */
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: var(--bg);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background: var(--header-footer);
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.tagline {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav button {
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 3px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+nav button:hover {
+  background: var(--button-hover);
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+video {
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+form label {
+  font-weight: 600;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+form button[type="submit"] {
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background: var(--button-hover);
+}
+
+footer {
+  background: var(--header-footer);
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  color: white;
+}
