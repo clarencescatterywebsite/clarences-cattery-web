@@ -307,3 +307,47 @@ form button[type="submit"]:hover {
   color: #ddd;
 }
 
+.page {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Comic Neue', cursive;
+}
+
+
+.page {
+  padding: 2rem;
+  font-family: 'Comic Neue', cursive;
+}
+
+.accommodation-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.text-box {
+  background-color: #fff;
+  border-left: 6px solid #95d5b2;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+.text-box p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.text-box ul {
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.text-box li {
+  margin-bottom: 0.5rem;
+}
+
