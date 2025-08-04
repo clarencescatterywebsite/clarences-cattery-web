@@ -140,3 +140,170 @@ form button[type="submit"]:hover {
   text-align: center;
   color: var(--text-color);
 }
+/* Accommodation Section */
+#accommodation {
+  background-color: #f3f9f3;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#accommodation h2 {
+  font-size: 2rem;
+  color: var(--header-footer);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.accommodation-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.text-box {
+  background: #d6ead6; /* pastel green */
+  border: 2px solid var(--button-bg);
+  border-radius: 15px;
+  padding: 1.2rem 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.06);
+  line-height: 1.5;
+  white-space: pre-line;
+  transition: background 0.3s ease;
+}
+
+.text-box:hover {
+  background: #c0d9c0;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 2.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photo-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.photo-card:hover {
+  transform: scale(1.03);
+}
+
+.photo-card img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+.caption {
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #e5f3e5;
+  color: var(--text-color);
+}
+
+
+/* Initial hidden state */
+.fade-init {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* When appear class is added */
+.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.photo-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.photo-card:hover {
+  transform: scale(1.05);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  animation-name: zoomIn;
+  animation-duration: 0.3s;
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.7);}
+  to {transform: scale(1);}
+}
+
+.modal-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #ddd;
+}
+
