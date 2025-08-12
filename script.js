@@ -1,16 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  // --- Show/Hide Pages ---
   function showPage(pageId) {
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => {
       page.style.display = (page.id === pageId) ? 'block' : 'none';
     });
+
+    // ✅ Background only on home page
+    if (pageId === 'home') {
+      document.body.classList.add('home-page');
+    } else {
+      document.body.classList.remove('home-page');
+    }
   }
   window.showPage = showPage;
 
   // Show the home page by default
   showPage('home');
 
-  // Contact form submit handler
+  // --- Contact Form Submission ---
   const form = document.getElementById('contactForm');
   const thankYouMessage = document.getElementById('thankYouMessage');
 
@@ -34,9 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           showError();
         }
-      }).catch(() => {
-        showError();
-      });
+      }).catch(showError);
     });
   }
 
@@ -47,10 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thankYouMessage.style.color = 'red';
       fadeOut(thankYouMessage, 4000);
     }
-  }
-
-  // Fade out function
-  function fadeOut(element, delay) {
+  }  function fadeOut(element, delay) {
     setTimeout(() => {
       element.style.transition = "opacity 1s ease";
       element.style.opacity = 0;
@@ -60,20 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1000);
     }, delay);
   }
-  document.addEventListener('DOMContentLoaded', () => {
-  function showPage(pageId) {
-    // existing showPage code...
-  }
-  window.showPage = showPage;
 
-  // existing code for showing home page, form submission, fadeOut, etc.
-
-  // --- Add this at the end inside DOMContentLoaded ---
+  // --- Load Gallery ---
   fetch('/gallery.json')
     .then(response => response.json())
     .then(data => {
       const gallery = document.getElementById('gallery');
-      if (!gallery) return; // Exit if no gallery container on page
+      if (!gallery) return;
       data.forEach(item => {
         const container = document.createElement('div');
         container.classList.add('gallery-item');
@@ -91,37 +88,33 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     })
     .catch(err => console.error('Error loading gallery:', err));
-});
-});
 
-// Modal Elements
-const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modal-img');
-const closeBtn = document.querySelector('.modal-close');
+  // --- Modal Image Viewer ---
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalCloseBtn = document.querySelector('.modal-close');
 
-// Open modal on image click
-document.querySelectorAll('.photo-card img').forEach(img => {
-  img.addEventListener('click', () => {
-    modal.style.display = 'block';
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
+  document.querySelectorAll('.photo-card img').forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = 'block';
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    });
   });
-});
 
-// Close modal on close button click
-closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-
-// Close modal on click outside image
-modal.addEventListener('click', e => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
   }
-});
 
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
 
-document.addEventListener('DOMContentLoaded', () => {
+  // --- Lightbox for Gallery Images ---
   const galleryImages = document.querySelectorAll('.gallery img');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.querySelector('.lightbox-img');
@@ -158,19 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
     img.addEventListener('click', () => showLightbox(index));
   });
 
-  closeBtn.addEventListener('click', hideLightbox);
+  if (closeBtn) closeBtn.addEventListener('click', hideLightbox);
+  if (nextBtn) nextBtn.addEventListener('click', showNext);
+  if (prevBtn) prevBtn.addEventListener('click', showPrev);
 
-  nextBtn.addEventListener('click', showNext);
-  prevBtn.addEventListener('click', showPrev);
-
-  // Close lightbox when clicking outside the image
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      hideLightbox();
-    }
+    if (e.target === lightbox) hideLightbox();
   });
 
-  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (lightbox.style.display === 'flex') {
       if (e.key === 'Escape') hideLightbox();
@@ -178,4 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft') showPrev();
     }
   });
+
 });
+
+
